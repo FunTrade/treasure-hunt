@@ -6,14 +6,6 @@ import * as fs from 'fs';
 
 import config from './config';
 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import time
-import names
-import password_generator
-import itertools
-import random
-
 const invite: string = process.argv[2] || config.invite;
 
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 12);
