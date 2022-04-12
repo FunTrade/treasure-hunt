@@ -39,12 +39,19 @@ const run = async () => {
     if (!fs.existsSync(`${config.screenshotsDir}/${username}`)) fs.mkdirSync(`${config.screenshotsDir}/${username}`);
 
     console.log(`[${i}] Starting run`);
-
+    
     console.log(`[${i}] Email:`, username + '@emaildrop.io');
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
     const screenshot = makeScreenshot(page, username);
+    
+    browser.get("https://www.minuteinbox.com")
+    time.sleep(10)
+    copyEmailButton = browser.find_element_by_css_selector('body > div:nth-child(2) > div:nth-child(4) > div > a.blockLink.copy.cetc')
+    copyEmailButton.click()
+    print("Email Copied!")
+    
 
     await page.goto('https://treasure.cloud', { waitUntil: 'load', timeout: 0 });
     await page.goto('https://app.treasure.cloud/auth/signup?code=' + invite, { waitUntil: 'load', timeout: 0 });
